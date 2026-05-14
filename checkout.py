@@ -25,6 +25,10 @@ def run():
         page.locator('.shopping_cart_link').click()
         print("Cart has been opened!")
 
+        #Click checkout button
+        page.locator('#checkout').click()
+        print("Checkout button clicked")
+
         browser.close()
 
 if __name__ == "__main__":
