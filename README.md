@@ -153,7 +153,7 @@ This project was built as part of learning:
 
 Efio-esien Efiom
 
-QA Manual and Automation Engineer | Software Tester
+QA Engineer | Software Tester
 
 ---
 
