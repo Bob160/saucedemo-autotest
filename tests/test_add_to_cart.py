@@ -1,30 +1,23 @@
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, Page, expect
+from tests.test_login_test import test_login
+from pages.add_to_cart import Add_to_cart
+import os
+from dotenv import load_dotenv
 
-def run():
-    with sync_playwright() as p:
+load_dotenv(override=False)
+
+def test_add_to_cart(page : Page) -> None:
+
+    #Login
+    test_login(page)
     
-        browser = p.chromium.launch(headless=False, slow_mo=500)
+    #Run the methods - view item in the inventory, then check if add to cart button is visible, then add item to cart, and finally check that item is in the cart
+    cart = Add_to_cart(page)
+    cart.view_item_in_inventory()
+    cart.is_add_to_cart_visible()
+    cart.click_add_to_cart_button()
+    cart.check_item_in_cart()
 
-        #Navigate to website
-        page = browser.new_page()
-        page.goto('https://www.saucedemo.com')
-
-        #Login
-        page.fill('input[name="user-name"]', 'standard_user')
-        page.fill('input[name="password"]', 'secret_sauce')
-        page.locator('#login-button').click()
-        print("Login successful!")
-
-        #Add items to cart
-        page.locator('#add-to-cart-sauce-labs-bike-light').click()
-        print("Product 1 added to cart successfully!")
-        page.locator('#add-to-cart-sauce-labs-onesie').click()
-        print("Product 2 added to cart successful!")
-
-        browser.close()
-
-if __name__ == "__main__":
-    run()
 
 
 
