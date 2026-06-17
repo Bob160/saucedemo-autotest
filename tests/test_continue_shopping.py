@@ -1,34 +1,18 @@
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import Page, expect
+from conftest import logged_in_page, cart
+from pages.continue_shopping import Continue_shopping
 
-def run():
-    with sync_playwright() as p:
+
+
+
+def test_continue_shopping(cart):
     
-        browser = p.chromium.launch(headless=False, slow_mo=1500)
+    continue_to_shop = Continue_shopping(cart)
+    continue_to_shop.click_continue_shopping_button()
+    continue_to_shop.add_item_one()
+    continue_to_shop.add_item_two()
 
-        #Navigate to website
-        page = browser.new_page()
-        page.goto('https://www.saucedemo.com')
-
-        #Login
-        page.fill('input[name="user-name"]', 'standard_user')
-        page.fill('input[name="password"]', 'secret_sauce')
-        page.locator('#login-button').click()
-        print("Login successful!")
-
-        #Add items to cart
-        page.locator('#add-to-cart-sauce-labs-bike-light').click()
-        print("Product 1 added to cart successfully!")
-        page.locator('#add-to-cart-sauce-labs-onesie').click()
-        print("Product 2 added to cart successful!")
-
-        #Return to shopping
-        page.locator('#continue-shopping').click
-        print("I will continue shopping")
-
-        browser.close()
-
-if __name__ == "__main__":
-    run()
+    assert continue_to_shop.check_cart_count() == '3'
 
 
 

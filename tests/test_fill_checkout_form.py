@@ -1,41 +1,18 @@
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import Page, expect
+from conftest import cart
+from pages.fill_checkout_form import Fill_checkout
 
-def run():
-    with sync_playwright() as p:
-    
-        browser = p.chromium.launch(headless=False, slow_mo=1500)
 
-        #Navigate to website
-        page = browser.new_page()
-        page.goto('https://www.saucedemo.com')
+def test_fill_checkout_form(cart, page: Page):
 
-        #Login
-        page.fill('input[name="user-name"]', 'standard_user')
-        page.fill('input[name="password"]', 'secret_sauce')
-        page.locator('#login-button').click()
-        print("Login successful!")
+    check_out_form = Fill_checkout(cart)
 
-        #Add items to cart
-        page.locator('#add-to-cart-sauce-labs-bike-light').click()
-        print("Product 1 added to cart successfully!")
-        page.locator('#add-to-cart-sauce-labs-onesie').click()
-        print("Product 2 added to cart successful!")
+    check_out_form.click_firstname()
+    check_out_form.fill_firstname()
+    check_out_form.click_lastname()
+    check_out_form.fill_firstname()
+    check_out_form.click_postalcode()
+    check_out_form.fill_postalcode()
+    check_out_form.click_button()
 
-        #View cart items
-        page.locator('.shopping_cart_link').click()
-        print("Cart has been opened!")
-
-        #Click checkout button
-        page.locator('#checkout').click()
-        print("Checkout button clicked")
-
-        #Fill check out form
-        page.fill('#first-name', 'Shoila')
-        page.fill('#last-name', 'Kennedy')
-        page.fill('#postal-code', '02345')
-        page.locator('#continue').click()
-
-        browser.close()
-
-if __name__ == "__main__":
-    run()
+    assert page.url == ("https://www.saucedemo.com/checkout-step-two.html")
