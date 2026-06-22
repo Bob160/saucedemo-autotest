@@ -1,31 +1,13 @@
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import Page, expect
+from conftest import logged_in_page
+from pages.view_cart import View_cart
 
-def run():
-    with sync_playwright() as p:
-    
-        browser = p.chromium.launch(headless=False, slow_mo=500)
+def test_view_cart(logged_in_page, page : Page):
 
-        #Navigate to website
-        page = browser.new_page()
-        page.goto('https://www.saucedemo.com')
+    view_cart = View_cart(logged_in_page)
 
-        #Login
-        page.fill('input[name="user-name"]', 'standard_user')
-        page.fill('input[name="password"]', 'secret_sauce')
-        page.locator('#login-button').click()
-        print("Login successful!")
+    view_cart.view_cart()
 
-        #Add items to cart
-        page.locator('#add-to-cart-sauce-labs-bike-light').click()
-        print("Product 1 added to cart successfully!")
-        page.locator('#add-to-cart-sauce-labs-onesie').click()
-        print("Product 2 added to cart successful!")
+    page.wait_for_url('**/cart.html')
 
-        #View cart items
-        page.locator('.shopping_cart_link').click()
-        print("Cart has been opened!")
-
-        browser.close()
-
-if __name__ == "__main__":
-    run()
+    assert "cart" in page.url

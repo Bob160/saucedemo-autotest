@@ -1,35 +1,14 @@
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import Page, expect
+from conftest import cart
+from pages.checkout import Checkout_page
 
-def run():
-    with sync_playwright() as p:
-    
-        browser = p.chromium.launch(headless=False, slow_mo=500)
+def test_checkout(cart, page : Page):
 
-        #Navigate to website
-        page = browser.new_page()
-        page.goto('https://www.saucedemo.com')
+    checkout_from_shop = Checkout_page(cart)
 
-        #Login
-        page.fill('input[name="user-name"]', 'standard_user')
-        page.fill('input[name="password"]', 'secret_sauce')
-        page.locator('#login-button').click()
-        print("Login successful!")
+    checkout_from_shop.view_cart()
+    checkout_from_shop.check_out()
 
-        #Add items to cart
-        page.locator('#add-to-cart-sauce-labs-bike-light').click()
-        print("Product 1 added to cart successfully!")
-        page.locator('#add-to-cart-sauce-labs-onesie').click()
-        print("Product 2 added to cart successful!")
+    page.wait_for_url("**/checkout-step-one.html")
 
-        #View cart items
-        page.locator('.shopping_cart_link').click()
-        print("Cart has been opened!")
-
-        #Click checkout button
-        page.locator('#checkout').click()
-        print("Checkout button clicked")
-
-        browser.close()
-
-if __name__ == "__main__":
-    run()
+    assert page.url == ("https://www.saucedemo.com/checkout-step-one.html")

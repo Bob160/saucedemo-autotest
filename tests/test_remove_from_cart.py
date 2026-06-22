@@ -1,34 +1,17 @@
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import Page, expect
+from pages.remove_from_cart import Remove_from_cart
+from conftest import logged_in_page
 
-def run():
-    with sync_playwright() as p:
-    
-        browser = p.chromium.launch(headless=False, slow_mo=1000)
 
-        #Navigate to website
-        page = browser.new_page()
-        page.goto('https://www.saucedemo.com')
+def test_remove_from_cart(logged_in_page, page : Page):
+    remove_item = Remove_from_cart(logged_in_page)
 
-        #Login
-        page.fill('input[name="user-name"]', 'standard_user')
-        page.fill('input[name="password"]', 'secret_sauce')
-        page.locator('#login-button').click()
-        print("Login successful!")
+    remove_item.item_one()
+    remove_item.item_two()
+    remove_item.open_the_cart()
+    remove_item.remove_item()
 
-        #Add items to cart
-        page.locator('#add-to-cart-sauce-labs-bike-light').click()
-        print("Product 1 added to cart successfully!")
-        page.locator('#add-to-cart-sauce-labs-onesie').click()
-        print("Product 2 added to cart successful!")
-
-        #Remove from cart
-        page.locator('#remove-sauce-labs-onesie').click
-        print("Item removed from cart")
-
-        browser.close()
-
-if __name__ == "__main__":
-    run()
+    assert remove_item.cart_number() == "1"
 
 
 

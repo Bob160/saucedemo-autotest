@@ -1,25 +1,15 @@
 from playwright.sync_api import sync_playwright, Page, expect
 from tests.test_login_test import test_login
+from pages.login_page import LoginPage
 from pages.add_to_cart import Add_to_cart
-import os
-from dotenv import load_dotenv
+from conftest import logged_in_page
 
-load_dotenv(override=False)
 
-def test_add_to_cart(page : Page) -> None:
-
-    #Login
-    test_login(page)
+def test_add_to_cart(logged_in_page) -> None:
     
-    #Run the methods - view item in the inventory, then check if add to cart button is visible, then add item to cart, and finally check that item is in the cart
-    cart = Add_to_cart(page)
+    cart = Add_to_cart(logged_in_page)
+
     cart.view_item_in_inventory()
     cart.is_add_to_cart_visible()
     cart.click_add_to_cart_button()
     cart.check_item_in_cart()
-
-
-
-
-
-
