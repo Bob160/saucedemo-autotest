@@ -1,5 +1,5 @@
 import re 
-from playwright.sync_api import Page, expect
+from playwright.sync_api import Page
 
 class Fill_checkout:
 
@@ -32,3 +32,4 @@ class Fill_checkout:
     def click_button(self):
         self.continue_button.click()
     
+#Have one method that clicks and fills

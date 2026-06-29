@@ -24,11 +24,11 @@ def logged_in_page(page):
     )
     return page
 
-@pytest.fixture
-def cart(logged_in_page):
-     add_cart = Add_to_cart(logged_in_page)
-     add_cart.view_item_in_inventory()
-     add_cart.is_add_to_cart_visible()
+# @pytest.fixture
+# def cart(logged_in_page):
+#      add_cart = Add_to_cart(logged_in_page)
+#      add_cart.view_item_in_inventory()
+#      add_cart.is_add_to_cart_visible()
      
     
 
@@ -51,6 +51,6 @@ def page(browser):
 # def cart(page):
 #     return Add_to_cart(page)
 
-# @pytest.fixture
-# def cart(logged_in_page):
-#     return Add_to_cart(logged_in_page)
+@pytest.fixture
+def cart(logged_in_page):
+    return Add_to_cart(logged_in_page)
