@@ -5,9 +5,9 @@ from pages.continue_shopping import Continue_shopping
 
 
 
-def test_continue_shopping(cart):
+def test_continue_shopping(page):
     
-    continue_to_shop = Continue_shopping(cart)
+    continue_to_shop = Continue_shopping(page)
     continue_to_shop.click_continue_shopping_button()
     continue_to_shop.add_item_one()
     continue_to_shop.add_item_two()
