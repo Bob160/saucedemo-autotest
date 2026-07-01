@@ -29,6 +29,9 @@ jobs:
         run: uv run playwright install --with-deps
 
       - name: Run tests
+        env:
+          USERNAME: ${{ secrets.USERNAME }}
+          PASSWORD: ${{ secrets.PASSWORD }}  
         run: uv run pytest --tracing=retain-on-failure
 
       - name: Upload Playwright traces
