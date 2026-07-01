@@ -4,7 +4,8 @@ from pages.checkout import Checkout_page
 
 def test_checkout(cart, page : Page):
 
-    #checkout_from_shop = Checkout_page(page) add to fixture
+    #add to fixture
+    checkout_from_shop = Checkout_page(page)
 
     cart.view_item_in_inventory()
     cart.is_add_to_cart_visible()
