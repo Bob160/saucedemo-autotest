@@ -8,7 +8,7 @@ def test_fill_checkout_form(logged_in_page, cart, page: Page):
 
     view_my_cart = View_cart(logged_in_page)
     view_my_cart.view_cart()     
-    view_my_cart.click_checkout_button()
+    view_my_cart.my_checkout_button()
     check_out_form = Fill_checkout(page)
     check_out_form.fill_firstname()
     check_out_form.fill_lastname()
