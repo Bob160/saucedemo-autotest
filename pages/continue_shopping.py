@@ -24,5 +24,5 @@ class Continue_shopping:
     def add_item_two(self):
         self.add_second_item.click()
     
-    def check_cart_count(self):
-        return self.cart_count.text_content()
+    def check_cart_count(self, expected_count):
+        expect(self.cart_count).to_have_text(str(expected_count)== "3")
