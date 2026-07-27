@@ -5,7 +5,7 @@ from pages.fill_checkout_form import Fill_checkout
 
 def test_fill_checkout_form(cart, page: Page):
 
-    check_out_form = Fill_checkout(cart)
+    check_out_form = Fill_checkout(page)
 
     check_out_form.click_firstname()
     check_out_form.fill_firstname()
