@@ -54,3 +54,6 @@ def page(browser):
 @pytest.fixture
 def cart(logged_in_page):
     return Add_to_cart(logged_in_page)
+
+def pytest_html_report_title(report):
+    report.title = "Saucedemo E2E Automated Test Report"
