@@ -8,10 +8,10 @@ class Continue_shopping:
 
         #Locator
 
-        self.continue_shopping = page.locator("[data-test=\"continue-shopping\"]")
-        self.add_first_item = page.locator("[data-test=\"add-to-cart-sauce-labs-bike-light\"]")
-        self.add_second_item = page.locator("[data-test=\"add-to-cart-sauce-labs-onesie\"]")
-        self.cart_count = page.locator("[data-test=\"shopping-cart-badge\"]")
+        self.continue_shopping = page.locator("[data-test=continue-shopping]")
+        self.add_first_item = page.locator("[data-test=add-to-cart-sauce-labs-bike-light]")
+        self.add_second_item = page.locator("[data-test=add-to-cart-sauce-labs-onesie]")
+        self.cart_count = page.locator("[data-test=shopping-cart-badge]")
 
         #Method
     

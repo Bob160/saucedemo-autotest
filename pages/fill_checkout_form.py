@@ -6,10 +6,10 @@ class Fill_checkout:
     def __init__(self, page : Page):
         self.page = page
 
-        self.firstname = page.locator("[data-test=\"firstName\"]")
-        self.lastname = page.locator("[data-test=\"lastName\"]")
-        self.postalcode = page.locator("[data-test=\"postalCode\"]")
-        self.continue_button = page.locator("[data-test=\"continue\"]")
+        self.firstname = page.locator("[data-test=firstName]")
+        self.lastname = page.locator("[data-test=lastName]")
+        self.postalcode = page.locator("[data-test=postalCode]")
+        self.continue_button = page.locator("[data-test=continue]")
         
 
 
