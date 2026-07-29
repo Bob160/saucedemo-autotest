@@ -8,9 +8,9 @@ class Add_to_cart:
         self.page = page
 
         #Locators
-        self.add_to_cart = page.locator("[data-test=\"add-to-cart\"]")
-        self.view_item_locator = page.locator("[data-test=\"item-1-title-link\"]")
-        self.view_item_in_cart = page.locator("[data-test=\"item-quantity\"]")
+        self.add_to_cart = page.locator("[data-test=add-to-cart]")
+        self.view_item_locator = page.locator("[data-test=item-1-title-link]")
+        self.view_item_in_cart = page.locator("[data-test=item-quantity]")
 
     #Methods
     def is_add_to_cart_visible(self):
