@@ -7,11 +7,17 @@ class Remove_from_cart:
         self.page = page
 
         #Locators
-        self.add_first_item = page.locator("[data-test=add-to-cart-sauce-labs-bike-light]")
-        self.add_second_item = page.locator("[data-test=add-to-cart-sauce-labs-onesie]")
-        self.open_cart = page.locator("[data-test=shopping-cart-link]")
-        self.remove = page.locator("[data-test=remove-sauce-labs-bike-light]")
-        self.check_number = page.locator("[data-test=shopping-cart-badge]")
+        # self.add_first_item = page.locator("[data-test=add-to-cart-sauce-labs-bike-light]")
+        # self.add_second_item = page.locator("[data-test=add-to-cart-sauce-labs-onesie]")
+        # self.open_cart = page.locator("[data-test=shopping-cart-link]")
+        # self.remove = page.locator("[data-test=remove-sauce-labs-bike-light]")
+        # self.check_number = page.locator("[data-test=shopping-cart-badge]")
+
+        self.add_first_item = page.get_by_test_id("add-to-cart-sauce-labs-bike-light")
+        self.add_second_item = page.get_by_test_id("add-to-cart-sauce-labs-onesie")
+        self.open_cart = page.get_by_test_id("shopping-cart-link")
+        self.remove = page.get_by_test_id("remove-sauce-labs-bike-light")
+        self.check_number = page.get_by_test_id("shopping-cart-badge")
 
 
     def item_one(self):
