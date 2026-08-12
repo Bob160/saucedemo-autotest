@@ -6,8 +6,11 @@ class View_cart:
         self.page = page
 
         #Locators
-        self.click_cart = page.locator("[data-test=shopping-cart-link]")
-        self.checkout_button = page.locator("[data-test=checkout]")
+        # self.click_cart = page.locator("[data-test=shopping-cart-link]")
+        # self.checkout_button = page.locator("[data-test=checkout]")
+
+        self.click_cart = page.get_by_test_id("shopping-cart-link")
+        self.checkout_button = page.get_by_test_id("checkout")
 
         #Method
 

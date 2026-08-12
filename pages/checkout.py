@@ -8,8 +8,10 @@ class Checkout_page:
 
 
         #Locators
-        self.open_cart = page.locator("[data-test=shopping-cart-link]")
-        self.click_checkout = page.locator("[data-test=checkout]")
+        # self.open_cart = page.locator("[data-test=shopping-cart-link]")
+        # self.click_checkout = page.locator("[data-test=checkout]")
+        self.open_cart = page.get_by_test_id("shopping-cart-link")
+        self.click_checkout = page.get_by_test_id("checkout")
         #self.command = page.wait_for_url("**/checkout-step-one.html") add this to the check_out function
 
     #Methods
