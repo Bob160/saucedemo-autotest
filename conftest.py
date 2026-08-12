@@ -29,7 +29,7 @@ def logged_in_page(page):
 def browser():
     with sync_playwright() as p:
         p.selectors.set_test_id_attribute("data-test")
-        browser = p.chromium.launch(headless= False, slow_mo=1000)
+        browser = p.chromium.launch(headless= True, slow_mo=1000)
         yield browser
         browser.close()
 
