@@ -1,11 +1,24 @@
 # Playwright With Python E-Commerce Test Automation Project
 
-A beginner-to-intermediate automation testing project built with Python and Playwright.
+[![E2E Tests](https://github.com/Bob160/saucedemo-autotest/actions/workflows/playwright.yml/badge.svg)](https://github.com/Bob160/saucedemo-autotest/actions)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Playwright](https://img.shields.io/badge/Playwright-Automation-green.svg)](https://playwright.dev/python/)
+[![Framework](https://img.shields.io/badge/Design%20Pattern-Page%20Object%20Model-orange.svg)]()
 
-This project automates key user journeys such as login, product selection, cart management, and checkout using the Page Object Model (POM) design pattern on an E-commerce web application.
+A modular End-to-End (E2E) UI test automation framework built with **Python**, **Playwright**, and **Pytest**, managed using **uv** and fully integrated with **GitHub Actions** CI/CD. This suite automates key user journeys—including authentication, cart manipulation, and checkout flows—on the [Sauce Demo](https://www.saucedemo.com) e-commerce application.
 
 ---
 
+## Key Architecture & Features
+
+* **Page Object Model (POM):** Decouples test logic from page-specific locators and UI interactions for maintainability.
+* **CI/CD Pipeline:** Automated build execution via GitHub Actions on every push and pull request.
+* **Automated Failure Artifacts:** Hooks capture full-page screenshots and output execution reports stored in `reports/`.
+* **Implicit Synchronization:** Leverages Playwright’s native auto-waiting mechanisms to eliminate flaky hardcoded sleeps.
+* **Modular Fixtures:** Reusable Pytest fixtures handle browser lifecycle, page context initialization, and dependency injection.
+* **Modern Tooling:** Uses `uv` for fast dependency locking (`uv.lock`) alongside standard `pyproject.toml` and `pytest.ini` configurations.
+
+---
 # Project Overview
 
 This automation project was developed to  demonstrate:
@@ -23,24 +36,53 @@ https://www.saucedemo.com
 
 ---
 
-# Tech Stack
+## Tech Stack
 
-* Python
-* Playwright
-* Chromium Browser
-* Page Object Model (POM)
+| Category | Technology |
+| :--- | :--- |
+| **Language** | Python 3.10+ |
+| **Automation Engine** | Playwright for Python |
+| **Test Runner** | Pytest |
+| **Dependency Manager** | `uv`|
+| **CI/CD Pipeline** | GitHub Actions |
+| **Design Pattern** | Page Object Model (POM) |
+| **Target Application** | Sauce Demo (`https://www.saucedemo.com`) |
 
 ---
 
-# Features
+## Project Structure
 
-* Automated login testing
-* Positive and negative test scenarios
-* Add-to-cart functionality
-* Cart validation
-* Checkout automation
-* Logout functionality
-* Modular and reusable test structure
+```text
+saucedemo-tests/
+├── .github/
+│   └── workflows/          # GitHub Actions workflow specifications
+├── pages/                  # Page Object classes (Locators & Actions)
+│   ├── add_to_cart.py
+│   ├── checkout.py
+│   ├── continue_shopping.py
+│   ├── fill_checkout_form.py
+│   ├── login_page.py
+│   ├── remove_from_cart.py
+│   └── view_cart.py
+├── reports/                # Test execution outputs and failure screenshots
+├── tests/                  # Pytest test modules
+│   ├── __init__.py
+│   ├── test_add_to_cart.py
+│   ├── test_checkout.py
+│   ├── test_continue_shopping.py
+│   ├── test_fill_checkout_form.py
+│   ├── test_login_test.py
+│   ├── test_remove_from_cart.py
+│   └── test_view_cart.py
+├── .env                    # Local environment variables
+├── .gitignore
+├── .python-version
+├── config.py               # Global configuration setup
+├── conftest.py             # Pytest fixtures and screenshot execution hooks
+├── pyproject.toml          # Project dependencies and tool settings
+├── pytest.ini              # Pytest CLI flags and defaults
+├── uv.lock                 # Locked dependency versioning file
+└── README.md
 
 ---
 
@@ -70,7 +112,19 @@ https://www.saucedemo.com
 
 ---
 
+
+##CI/CD Pipeline
+
+#Triggers: Automatically executes on push and pull_request events targeting main branches.
+
+#Artifacts: Generates video and HTML test execution reports and embeds failure screenshots, downloadable from the GitHub Actions run summary.
+
 # Installation
+
+##Prerequisites
+Python 3.10+
+
+uv (recommended) or standard pip
 
 ## Clone the Repository
 
@@ -86,8 +140,10 @@ cd ecommerce_playwright
 
 ## Install Dependencies
 
+Using uv
 ```bash
-pip install playwright
+uv sync
+uv run playwright install
 ```
 
 ## Install Playwright Browsers
@@ -103,13 +159,13 @@ playwright install
 Run all tests:
 
 ```bash
-python main.py
+uv run pytest tests
 ```
 
 Run a particular tests:
 
 ```bash
-python [file]
+uv run pytest tests/[file]
 ```
 
 ---
@@ -127,25 +183,9 @@ Password: secret_sauce
 
 Planned enhancements include:
 
-* Pytest integration
-* HTML test reports
-* Screenshot capture on failure
-* Logging framework
 * Data-driven testing
-* CI/CD integration
 * Parallel test execution
 * Cross-browser testing
-
----
-
-# Learning Objectives
-
-This project was built as part of learning:
-
-* Software Test Automation
-* Playwright with Python
-* Automation Framework Design
-* End-to-End Testing
 
 ---
 
