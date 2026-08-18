@@ -83,7 +83,7 @@ saucedemo-tests/
 ├── pytest.ini              # Pytest CLI flags and defaults
 ├── uv.lock                 # Locked dependency versioning file
 └── README.md
-
+```
 ---
 
 # Test Scenarios Covered
@@ -113,7 +113,7 @@ saucedemo-tests/
 ---
 
 
-##CI/CD Pipeline
+## CI/CD Pipeline
 
 #Triggers: Automatically executes on push and pull_request events targeting main branches.
 
