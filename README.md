@@ -115,16 +115,16 @@ saucedemo-tests/
 
 ## CI/CD Pipeline
 
-#Triggers: Automatically executes on push and pull_request events targeting main branches.
+*Triggers: Automatically executes on push and pull_request events targeting main branches.
 
-#Artifacts: Generates video and HTML test execution reports and embeds failure screenshots, downloadable from the GitHub Actions run summary.
+*Artifacts: Generates video and HTML test execution reports and embeds failure screenshots, downloadable from the GitHub Actions run summary.
 
 # Installation
 
 ##Prerequisites
-Python 3.10+
+*Python 3.10+
 
-uv (recommended) or standard pip
+*uv (recommended) or standard pip
 
 ## Clone the Repository
 
