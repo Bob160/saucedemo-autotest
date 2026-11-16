@@ -1,5 +1,4 @@
 from playwright.sync_api import sync_playwright
-#from tests.test_add_to_cart import test_add_to_cart
 from pages.add_to_cart import Add_to_cart
 from pages.login_page import LoginPage
 from dotenv import load_dotenv
@@ -29,7 +28,7 @@ def logged_in_page(page):
 def browser():
     with sync_playwright() as p:
         p.selectors.set_test_id_attribute("data-test")
-        browser = p.chromium.launch(headless= True, slow_mo=1000)
+        browser = p.chromium.launch(headless= True, slow_mo=500)
         yield browser
         browser.close()
 
@@ -39,11 +38,6 @@ def page(browser):
     page = browser.new_page()
     yield page
     page.close()
-
-
-# @pytest.fixture
-# def cart(page):
-#     return Add_to_cart(page)
 
 @pytest.fixture
 def cart(logged_in_page):
