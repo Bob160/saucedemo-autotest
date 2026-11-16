@@ -122,20 +122,20 @@ saucedemo-tests/
 # Installation
 
 ##Prerequisites
-*Python 3.10+
+*Python 3.11+
 
 *uv (recommended) or standard pip
 
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/your-repository-name.git
+git clone https://github.com/Bob160/saucedemo-autotest
 ```
 
 ## Navigate to Project Directory
 
 ```bash
-cd ecommerce_playwright
+cd saucedemo-autotest
 ```
 
 ## Install Dependencies
